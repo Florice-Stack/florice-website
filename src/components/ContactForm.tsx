@@ -1,49 +1,56 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { site } from "@/lib/content";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
+    setErrorMessage("");
 
     const form = event.currentTarget;
     const data = new FormData(form);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          company: data.get("company"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          industry: data.get("industry"),
+          message: data.get("message"),
+          botField: data.get("bot-field"),
+        }),
       });
 
-      if (response.ok) {
+      const result = (await response.json()) as { success?: boolean; error?: string };
+
+      if (response.ok && result.success) {
         setStatus("success");
         form.reset();
         return;
       }
+
+      setErrorMessage(result.error ?? "Something went wrong.");
     } catch {
-      // fall through to error state
+      setErrorMessage("Something went wrong.");
     }
 
     setStatus("error");
   }
 
   return (
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}
-      className="card-surface space-y-4"
-    >
-      <input type="hidden" name="form-name" value="contact" />
+    <form onSubmit={handleSubmit} className="card-surface space-y-4">
       <p className="hidden" aria-hidden="true">
         <label>
-          Don&apos;t fill this out: <input name="bot-field" />
+          Don&apos;t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
         </label>
       </p>
 
@@ -154,7 +161,11 @@ export default function ContactForm() {
       )}
       {status === "error" && (
         <p className="text-sm text-red-700" role="status">
-          Something went wrong. Email us directly at consult@floricemilling.com
+          {errorMessage} Email us directly at{" "}
+          <a href={`mailto:${site.email}`} className="underline">
+            {site.email}
+          </a>
+          .
         </p>
       )}
     </form>

@@ -1,51 +1,61 @@
 # Florice Milling — Public Website
 
-Next.js (Node.js) site for **Florice Milling Spare & Solution** — B2B consulting for rice milling, wheat flour milling, parboiling, and grain processing.
+Next.js site for **Florice Milling Spare & Solution** — B2B consulting for rice milling, wheat flour milling, parboiling, and grain processing.
 
 ## Stack
 
-- **Next.js 15** + React 19 + TypeScript
+- **Next.js** + React + TypeScript
 - **Tailwind CSS**
-- **Lucide React** icons
-- SVG process diagrams (no stock photos)
-
-Legacy static HTML/CSS site is preserved in `legacy-static/` for reference.
+- **Vercel** (recommended hosting)
 
 ## Local development
 
 ```bash
 cd florice-website
 npm install
+cp .env.local.example .env.local   # optional, for contact form testing
 npm run dev
 ```
 
-Then open http://localhost:8080 in your browser.
+Open http://localhost:8080
 
-This project uses **Node.js** (Next.js), not Python's `http.server`.
+## Deploy to Vercel
+
+### 1. Push code to GitHub
+
+Repo: `Florice-Stack/Florice-Website`
+
+### 2. Import on Vercel
+
+1. [vercel.com](https://vercel.com) → sign in with GitHub
+2. **Add New → Project**
+3. Import **Florice-Stack / Florice-Website**
+4. Framework: **Next.js** (auto-detected)
+5. **Deploy**
+
+### 3. Contact form (Web3Forms)
+
+1. Sign up at [web3forms.com](https://web3forms.com) (free)
+2. Create a form → copy your **Access Key**
+3. Vercel → Project → **Settings → Environment Variables**
+4. Add `WEB3FORMS_ACCESS_KEY` = your key (Production, Preview, Development)
+5. **Redeploy** the project
+
+Submissions are emailed to the address you configure in Web3Forms.
 
 ## Pages
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home — hero, scope, quick navigation |
-| `/services` | Consulting services, industries, process |
-| `/work` | Case studies, outcomes, machinery |
+| `/` | Home |
+| `/services` | Services, industries, process |
+| `/work` | Case studies, machinery |
 | `/about` | About, brochure, FAQ |
-| `/contact` | Consultation request form |
-
-## Build & deploy
-
-```bash
-npm run build
-npm start
-```
-
-Configured for **Netlify** with `@netlify/plugin-nextjs` (see `netlify.toml`).
+| `/contact` | Consultation form |
 
 ## Assets
 
-- Capabilities brochure: `public/florice-capabilities-brochure.pdf`
-- Brochure generator script: `scripts/generate-brochure-pdf.py`
+- Brochure PDF: `public/florice-capabilities-brochure.pdf`
 
 ## Contact placeholders
 

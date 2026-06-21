@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f6f3ec;
+  --foreground: #1a1917;
+  --muted: #5a574f;
+  --border: #cfc9bc;
+  --accent: #465738;
+  --accent-hover: #38462d;
+  --card: #fdfcf9;
+  --accent-bg: #2f3d2a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal font-sans antialiased;
+  }
+
+  h1,
+  h2 {
+    @apply font-serif font-normal tracking-tight;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6;
+  }
+
+  .eyebrow {
+    @apply mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-olive;
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-sm px-5 py-2.5 text-sm font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-olive text-ivory hover:bg-olive-dark;
+  }
+
+  .btn-outline {
+    @apply border border-olive text-olive hover:bg-olive hover:text-ivory;
+  }
+
+  .card-surface {
+    @apply rounded-sm border border-[var(--border)] bg-ivory-card p-6 shadow-card;
+  }
+}

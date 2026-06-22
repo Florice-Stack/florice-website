@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import HomeHeroCarousel from "@/components/home/HomeHeroCarousel";
 import MissionStrip from "@/components/home/MissionStrip";
 import QuickNav from "@/components/home/QuickNav";
 import Reveal from "@/components/ui/Reveal";
@@ -7,6 +8,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <>
+      <HomeHeroCarousel />
       <Hero />
       <MissionStrip />
       <QuickNav />
@@ -19,7 +21,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-3 text-charcoal-muted">
                 Share your plant capacity, grain type, and current bottleneck. We respond within one business day with a
-                proposed scope — assessment, machinery review, or troubleshooting visit.
+                proposed scope — assessment, machinery review, or troubleshooting visit
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

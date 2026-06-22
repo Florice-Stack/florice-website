@@ -1,5 +1,4 @@
 import { heroScope } from "@/lib/content";
-import ConsultantHeroVideo from "@/components/home/ConsultantHeroVideo";
 import HeroContent from "@/components/home/HeroContent";
 import { heroScopeVisuals, SectionIcon } from "@/components/home/sectionVisuals";
 import Reveal from "@/components/ui/Reveal";
@@ -14,15 +13,7 @@ export default function Hero() {
         />
 
         <div className="container-content relative py-14 sm:py-16 lg:py-20">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(300px,440px)] lg:gap-10 xl:gap-16">
-            <HeroContent />
-
-            <Reveal delay={120} className="min-w-0">
-              <div className="interactive-media overflow-hidden rounded-xl border border-[var(--border)] bg-white motion-safe:transition-all motion-safe:duration-200">
-                <ConsultantHeroVideo />
-              </div>
-            </Reveal>
-          </div>
+          <HeroContent />
         </div>
       </div>
 

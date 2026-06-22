@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import MachineryProductsGrid from "@/components/spare-parts/MachineryProductsGrid";
 import SparePartsCatalog from "@/components/spare-parts/SparePartsCatalog";
-import SparePartsCategoryNav from "@/components/spare-parts/SparePartsCategoryNav";
-import SparePartsPrinciplesGrid from "@/components/spare-parts/SparePartsPrinciplesGrid";
-import SparePartsProcessFlow from "@/components/spare-parts/SparePartsProcessFlow";
+import SparePartsOrderingSection from "@/components/spare-parts/SparePartsOrderingSection";
 import Reveal from "@/components/ui/Reveal";
 import {
   machineryIntro,
   machineryProducts,
   sparePartsCategories,
+  sparePartsClosingCta,
   sparePartsIntro,
   sparePartsPrinciples,
   sparePartsProcess,
 } from "@/lib/content";
 import { sectionBandClass } from "@/lib/cn";
 
-const CATALOG_BAND_OFFSET = 4;
+const CATALOG_BAND_OFFSET = 3;
 
 export const metadata: Metadata = {
   title: "Machinery & Spare Parts",
@@ -41,26 +41,18 @@ export default function SparePartsPage() {
           </Reveal>
 
           <Reveal delay={80}>
-            <SparePartsCategoryNav categories={sparePartsCategories} className="mt-8 border-t border-[var(--border)] pt-8" />
-          </Reveal>
-        </div>
-      </section>
-
-      <section className={`border-b border-[var(--border)] section-pad ${sectionBandClass(1)}`}>
-        <div className="container-content">
-          <Reveal>
-            <p className="eyebrow text-center">Our approach</p>
-            <h2 className="section-heading text-center">Right equipment, quality parts, practical lead times</h2>
-          </Reveal>
-          <Reveal delay={60}>
-            <SparePartsPrinciplesGrid items={sparePartsPrinciples} />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/spare-parts/quote" className="btn btn-primary">
+                {sparePartsClosingCta.sparePartsButton}
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>
 
       <section
         id="machinery-lines"
-        className={`scroll-mt-24 border-b border-[var(--border)] section-pad ${sectionBandClass(2)}`}
+        className={`scroll-mt-24 border-b border-[var(--border)] section-pad ${sectionBandClass(1)}`}
       >
         <div className="container-content">
           <Reveal>
@@ -76,7 +68,7 @@ export default function SparePartsPage() {
         </div>
       </section>
 
-      <section className={`border-b border-[var(--border)] section-pad ${sectionBandClass(3)}`}>
+      <section className={`border-b border-[var(--border)] section-pad ${sectionBandClass(2)}`}>
         <div className="container-content">
           <Reveal>
             <p className="eyebrow">Spare parts catalogue</p>
@@ -92,13 +84,7 @@ export default function SparePartsPage() {
 
       <section className={`section-pad ${sectionBandClass(CATALOG_BAND_OFFSET + sparePartsCategories.length + 1)}`}>
         <div className="container-content">
-          <Reveal>
-            <p className="eyebrow">How ordering works</p>
-            <h2 className="text-3xl font-display">From specification to dispatch</h2>
-          </Reveal>
-          <Reveal delay={60} className="mt-10">
-            <SparePartsProcessFlow steps={sparePartsProcess} />
-          </Reveal>
+          <SparePartsOrderingSection principles={sparePartsPrinciples} steps={sparePartsProcess} />
         </div>
       </section>
     </>

@@ -672,17 +672,17 @@ export const missionItems = [
   {
     title: "Increase productivity",
     description:
-      "Higher head rice and flour recovery through effective, adaptable process and equipment decisions.",
+      "Higher head rice and flour recovery through effective, adaptable process and equipment decisions",
   },
   {
     title: "Reduce operating costs",
     description:
-      "Lower downtime, aspiration load, and maintenance burden with right-sized machinery and stable parameters.",
+      "Lower downtime, aspiration load, and maintenance burden with right-sized machinery and stable parameters",
   },
   {
     title: "Build reliability",
     description:
-      "Vendor-neutral specs, commissioning oversight, and machinery & spare parts coordination you can run shift after shift.",
+      "Vendor-neutral specs, commissioning oversight, and machinery & spare parts coordination you can run shift after shift",
   },
 ];
 

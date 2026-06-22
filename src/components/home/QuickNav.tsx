@@ -37,7 +37,7 @@ export default function QuickNav() {
           <p className="eyebrow">Start here</p>
           <h2 className="section-heading">Find what you need in one click</h2>
           <p className="mt-3 text-charcoal-muted">
-            Instead of scrolling one long page, jump straight to the section that matches your plant challenge.
+            Instead of scrolling one long page, jump straight to the section that matches your plant challenge
           </p>
         </Reveal>
         <div className="mx-auto grid w-full max-w-2xl gap-3 sm:grid-cols-2 sm:items-stretch">

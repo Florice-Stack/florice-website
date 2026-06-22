@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import RiceMillFlowDiagram from "@/components/diagrams/RiceMillFlowDiagram";
 import FlourMillFlowDiagram from "@/components/diagrams/FlourMillFlowDiagram";
-import MillingTrainsOverviewVisual from "@/components/milling-trains/MillingTrainsOverviewVisual";
+import ConsultantHeroVideo from "@/components/home/ConsultantHeroVideo";
 import TrainDetailSection from "@/components/milling-trains/TrainDetailSection";
 import Reveal from "@/components/ui/Reveal";
 import { sectionBandClass } from "@/lib/cn";
@@ -28,7 +28,9 @@ export default function MillingTrainsPage() {
               </div>
             </Reveal>
             <Reveal delay={80} className="min-w-0">
-              <MillingTrainsOverviewVisual />
+              <div className="interactive-media overflow-hidden rounded-xl border border-[var(--border)] bg-white motion-safe:transition-all motion-safe:duration-200">
+                <ConsultantHeroVideo />
+              </div>
             </Reveal>
           </div>
         </div>
